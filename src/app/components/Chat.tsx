@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import "primeflex/primeflex.css";
 import { fetchDb } from "../functions/fetch";
 import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 interface Message {
   content: string;
@@ -16,6 +17,7 @@ export default function Chat({
   score: number;
   setScore: (score: number) => void;
 }) {
+  const t = useTranslations("Chat");
   const { sid } = useParams();
 
   const [messages, setMessages] = useState<Message[]>([]);
@@ -106,7 +108,7 @@ export default function Chat({
       setMessages([
         {
           role: "system",
-          content: system + " DO NOT INCLUDE THE SCORE IN THE TEXT",
+          content: system + " DO NOT INCLUDE THE SCORE IN THE TEXT, reply with the same language as user input.",
         },
         { role: "assistant", content: scenarioData.start },
       ]);
@@ -131,7 +133,11 @@ export default function Chat({
           .filter((msg) => msg.role !== "system")
           .map((msg, index) => (
             <div key={index} className="mb-2 p-2">
-              <strong>{msg.role}:</strong> {msg.content}
+              <strong>
+                {msg.role == "assistant" ? t("role_assistant") : t("role_user")}
+                :
+              </strong>{" "}
+              {msg.content}
             </div>
           ))}
       </div>
@@ -139,7 +145,7 @@ export default function Chat({
       <div className="bg-white border-top-1 surface-border py-3 z-2">
         <div className="max-w-4xl mx-auto px-4 flex gap-3">
           <textarea
-            placeholder="Type here..."
+            placeholder={t("placeholder")}
             className="flex-1 min-h-4rem max-h-8rem p-3 border-1 border-round surface-border resize-none focus:outline-none focus:ring-2 focus:ring-primary"
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -149,7 +155,7 @@ export default function Chat({
             onClick={sendMessage}
             className="px-6 py-2 bg-primary text-white border-round hover:bg-primary-dark transition-colors duration-200 flex align-items-center justify-content-center"
           >
-            Send
+            {t("send")}
           </button>
         </div>
       </div>

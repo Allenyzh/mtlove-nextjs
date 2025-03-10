@@ -1,6 +1,7 @@
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import Link from "next/link";
+import {useTranslations} from 'next-intl';
 import "./ScenarioCard.css";
 import "/node_modules/primeflex/primeflex.css";
 import "/node_modules/primereact/resources/themes/saga-blue/theme.css";
@@ -16,9 +17,12 @@ interface Scenario {
 }
 
 export default function ScenarioCard({ scenario }: { scenario: Scenario }) {
+
+  const t = useTranslations('Card');
+
   const footer = (
     <Link href={`/challenges/${scenario.id}`} passHref>
-      <Button label="Start Challenge" severity="info" className="w-full" />
+      <Button label={t('button')} severity="info" className="w-full" />
     </Link>
   );
 

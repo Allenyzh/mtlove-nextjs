@@ -1,0 +1,22 @@
+{
+  "HomePage": {
+    "title": "MTLove"
+  },
+  "Language": {
+    "title": "Elige un idioma"
+  },
+  "Card": {
+    "button": "Iniciar Desafío"
+  },
+  "Nav": {
+    "home": "Inicio",
+    "title": "MTLove",
+    "score": "Puntuación"
+  },
+  "Chat": {
+    "send": "Enviar",
+    "placeholder": "Escribe un mensaje",
+    "role_assistant": "Asistente",
+    "role_user": "Tú"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "HomePage": {
+    "title": "MTLove"
+  },
+  "Language": {
+    "title": "选择语言"
+  },
+  "Card": {
+    "button": "开始挑战～"
+  },
+  "Nav": {
+    "home": "主页",
+    "title": "MTLove",
+    "score": "分数"
+  },
+  "Chat": {
+    "send": "发送",
+    "placeholder": "输入消息",
+    "role_assistant": "人工智能助手",
+    "role_user": "你"
+  }
+}

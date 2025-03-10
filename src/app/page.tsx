@@ -1,5 +1,9 @@
+"use client";
 import "/node_modules/primeflex/primeflex.css";
 import ScenarioCard from "./components/ScenarioCard";
+import { useTranslations } from "next-intl";
+import { fetchScenarioList } from "./functions/fetchScenarioList";
+import { useEffect, useState } from "react";
 
 interface Scenario {
   id: number;
@@ -9,16 +13,21 @@ interface Scenario {
   start: string;
 }
 
-export default async function Home() {
-  const data = await fetch(
-    "https://mtloveapi.huangdong.workers.dev/api/scenarios"
-  );
-  const scenarioList = await data.json();
-  // console.log(scenarioList);
+export default function Home() {
+  const t = useTranslations("HomePage");
+
+  const [scenarioList, setScenarioList] =useState<Scenario[]>([]);
+
+  useEffect(() => {
+    fetchScenarioList().then((data) => {
+      setScenarioList(data);
+    });
+  }, []);
+
   return (
     <main>
       <h1 className="flex justify-content-center align-content-center">
-        MTLove
+        {t("title")}
       </h1>
       <div className="grid">
         {scenarioList.map((scenario: Scenario, index: number) => {

@@ -108,7 +108,9 @@ export default function Chat({
       setMessages([
         {
           role: "system",
-          content: system + " DO NOT INCLUDE THE SCORE IN THE TEXT, reply with the same language as user input.",
+          content:
+            system +
+            " DO NOT INCLUDE THE SCORE IN THE TEXT, reply with the same language as user input.",
         },
         { role: "assistant", content: scenarioData.start },
       ]);

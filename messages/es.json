@@ -11,7 +11,8 @@
   "Nav": {
     "home": "Inicio",
     "title": "MTLove",
-    "score": "Puntuación"
+    "score": "Puntuación",
+    "language": "Elige un idioma"
   },
   "Chat": {
     "send": "Enviar",

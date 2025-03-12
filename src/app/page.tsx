@@ -4,6 +4,7 @@ import ScenarioCard from "./components/ScenarioCard";
 import { useTranslations } from "next-intl";
 import { fetchScenarioList } from "./functions/fetchScenarioList";
 import { useEffect, useState } from "react";
+import NavBar from "./components/NavBar";
 
 interface Scenario {
   id: number;
@@ -16,7 +17,7 @@ interface Scenario {
 export default function Home() {
   const t = useTranslations("HomePage");
 
-  const [scenarioList, setScenarioList] =useState<Scenario[]>([]);
+  const [scenarioList, setScenarioList] = useState<Scenario[]>([]);
 
   useEffect(() => {
     fetchScenarioList().then((data) => {
@@ -25,11 +26,12 @@ export default function Home() {
   }, []);
 
   return (
-    <main>
-      <h1 className="flex justify-content-center align-content-center">
-        {t("title")}
-      </h1>
-      <div className="grid">
+    <main className="flex flex-column">
+      <div className="fixed top-0 w-full z-5">
+        <NavBar score={-999} />
+      </div>
+
+      <div className="grid flex-1 pt-8">
         {scenarioList.map((scenario: Scenario, index: number) => {
           return (
             <div className="col-12 md:col-6 lg:col-3 " key={index}>
